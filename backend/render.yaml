@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: finwise-ai-backend
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: finwise-ai-backend.onrender.com
+      - key: COOKIE_SECURE
+        value: "True"
+      - key: SECURE_SSL_REDIRECT
+        value: "True"
+      - key: CORS_ORIGIN
+        value: https://your-frontend.vercel.app
+      - key: PUBLIC_SITE_URL
+        value: https://your-frontend.vercel.app
+      - key: RATE_LIMIT_ANON
+        value: 60/min
+      - key: RATE_LIMIT_USER
+        value: 120/min
+      - key: CELERY_TASK_ALWAYS_EAGER
+        value: "True"
+      - key: ADMIN_EMAIL
+        value: admin@finwise.ai
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: COINGECKO_API_BASE
+        value: https://api.coingecko.com/api/v3
+      # Optional: set DATABASE_URL to a free Postgres instance (Render/Neon/Supabase)
+      # for persistent storage instead of ephemeral SQLite.
+      - key: DATABASE_URL
+        value: ""
