@@ -3,6 +3,32 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Card from '../components/Card';
 
+function getErrorMessage(err) {
+  const data = err?.response?.data;
+
+  if (!data) {
+    return 'Registration failed. Please check your connection and try again.';
+  }
+
+  if (typeof data === 'string') {
+    return data;
+  }
+
+  if (data.error) {
+    return data.error;
+  }
+
+  if (data.detail) {
+    return data.detail;
+  }
+
+  const messages = Object.values(data).flatMap((value) =>
+    Array.isArray(value) ? value : [value]
+  );
+
+  return messages.find(Boolean) || 'Registration failed. Please try again.';
+}
+
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -20,7 +46,7 @@ export default function Register() {
       await register(username, email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Registration failed.');
+      setError(getErrorMessage(err));
     } finally {
       setBusy(false);
     }

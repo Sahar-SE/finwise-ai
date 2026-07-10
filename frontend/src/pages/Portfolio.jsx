@@ -19,32 +19,17 @@ export default function Portfolio() {
   const [message, setMessage] = useState('');
   const [file, setFile] = useState(null);
 
-  // AI Portfolio Analysis State
-  const [analyzing, setAnalyzing] = useState(false);
-  const [aiReport, setAiReport] = useState(null);
-
-  async function loadData() {
-    try {
-      const [assetRes, marketRes] = await Promise.all([
-        client.get('/assets'),
-        client.get('/market/overview'),
-      ]);
-      setAssets(assetRes.data.data || []);
-      setMarketData(marketRes.data || {});
-    } catch (err) {
-      console.error('Failed to load portfolio or market data:', err);
-    }
+  async function load() {
+    const res = await client.get('/assets');
+    setAssets(res.data.data);
   }
-
-  useEffect(() => {
-    loadData();
-  }, []);
+  useEffect(() => { load(); }, []);
 
   async function handleAdd(e) {
     e.preventDefault();
     setError(''); setMessage('');
     try {
-      await client.post('/assets', {
+      await client.post('/assets/', {
         ...form,
         volume: Number(form.volume),
         avg_buy_price: Number(form.avg_buy_price),
@@ -59,7 +44,7 @@ export default function Portfolio() {
 
   async function handleDelete(id) {
     await client.delete(`/assets/${id}`);
-    loadData();
+    load();
   }
 
   async function handleImport(e) {
@@ -69,7 +54,7 @@ export default function Portfolio() {
     const fd = new FormData();
     fd.append('file', file);
     try {
-      const res = await client.post('/assets/import', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const res = await client.post('/assets/import/', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
       setMessage(`Imported ${res.data.imported} rows${res.data.failed ? `, ${res.data.failed} failed` : ''}.`);
       setFile(null);
       loadData();
