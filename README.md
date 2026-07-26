@@ -100,8 +100,7 @@ Provide a JSON response with:
 
 ### 4. AI Predictions & Monte Carlo Corridor Forecast
 *Save screenshot as: `screenshots/predictions_chart.png`*
-![AI Predictions Chart](<img width="1911" height="821" alt="image" src="https://github.com/user-attachments/assets/8368de75-da56-4169-b25e-abc888d6404a" />
-)
+![AI Predictions Chart](https://github.com/user-attachments/assets/8368de75-da56-4169-b25e-abc888d6404a)
 
 ### 5. AI Predictions Market Thesis & Catalyst Report
 *Save screenshot as: `screenshots/predictions_thesis.png`*
