@@ -11,6 +11,10 @@ import Portfolio from './pages/Portfolio';
 import Predictions from './pages/Predictions';
 import Feedback from './pages/Feedback';
 import Newsletter from './pages/Newsletter';
+import StressTest from './pages/StressTest';
+import TradeJournal from './pages/TradeJournal';
+import PersonaAdvisor from './pages/PersonaAdvisor';
+import TimeMachine from './pages/TimeMachine';
 
 import AdminLayout from './pages/admin/AdminLayout';
 import SeoManager from './pages/admin/SeoManager';
@@ -35,6 +39,10 @@ export default function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/predictions" element={<Predictions />} />
+              <Route path="/stress-test" element={<StressTest />} />
+              <Route path="/trade-journal" element={<TradeJournal />} />
+              <Route path="/persona-advisor" element={<PersonaAdvisor />} />
+              <Route path="/time-machine" element={<TimeMachine />} />
             </Route>
 
             <Route path="/admin" element={<AdminRoute />}>

@@ -32,9 +32,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173 and log in with the bootstrapped admin account
-(`admin@finwise.ai` / `Admin@12345` by default — change these in
-`backend/.env` before deploying anywhere public).
+Open http://localhost:5173 and log in with your bootstrapped admin account (defined in `backend/.env`).
 
 ## Project layout
 

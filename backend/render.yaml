@@ -29,9 +29,9 @@ services:
       - key: CELERY_TASK_ALWAYS_EAGER
         value: "True"
       - key: ADMIN_EMAIL
-        value: admin@finwise.ai
+        sync: false
       - key: ADMIN_USERNAME
-        value: admin
+        sync: false
       - key: ADMIN_PASSWORD
         generateValue: true
       - key: COINGECKO_API_BASE

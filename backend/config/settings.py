@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "traffic",
     "adminpanel",
     "news",
+    "trade_journal",
 ]
 
 MIDDLEWARE = [
@@ -176,9 +177,9 @@ CELERY_TASK_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
 
 # ---------------- Admin bootstrap ----------------
-ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@finwise.ai")
-ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "Admin@12345")
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL")
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
 # ---------------- Security (SRS 5.2) ----------------
 SECURE_SSL_REDIRECT = os.environ.get("SECURE_SSL_REDIRECT", "False") == "True"

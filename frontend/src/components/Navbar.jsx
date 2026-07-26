@@ -24,17 +24,21 @@ export default function Navbar() {
           FinWise<span className="text-[var(--mint)]">-AI</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           <NavLink to="/" end className={navLink}>Home</NavLink>
           {user && <NavLink to="/dashboard" className={navLink}>Dashboard</NavLink>}
           {user && <NavLink to="/portfolio" className={navLink}>Portfolio</NavLink>}
           {user && <NavLink to="/predictions" className={navLink}>Predictions</NavLink>}
+          {user && <NavLink to="/stress-test" className={navLink}>Stress Test</NavLink>}
+          {user && <NavLink to="/trade-journal" className={navLink}>Trade Journal</NavLink>}
+          {user && <NavLink to="/persona-advisor" className={navLink}>AI Advisor</NavLink>}
+          {user && <NavLink to="/time-machine" className={navLink}>Time Machine</NavLink>}
           <NavLink to="/newsletter" className={navLink}>AI Digest</NavLink>
           <NavLink to="/feedback" className={navLink}>Feedback</NavLink>
           {user?.role === 'admin' && <NavLink to="/admin" className={navLink}>Admin</NavLink>}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           {user ? (
             <button
               onClick={handleLogout}
@@ -52,18 +56,22 @@ export default function Navbar() {
           )}
         </div>
 
-        <button className="md:hidden text-[var(--text)]" onClick={() => setOpen(!open)}>
+        <button className="lg:hidden text-[var(--text)]" onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-[var(--border)] px-4 py-3 md:hidden">
+        <div className="border-t border-[var(--border)] px-4 py-3 lg:hidden">
           <div className="flex flex-col gap-3">
             <NavLink to="/" end className={navLink} onClick={() => setOpen(false)}>Home</NavLink>
             {user && <NavLink to="/dashboard" className={navLink} onClick={() => setOpen(false)}>Dashboard</NavLink>}
             {user && <NavLink to="/portfolio" className={navLink} onClick={() => setOpen(false)}>Portfolio</NavLink>}
             {user && <NavLink to="/predictions" className={navLink} onClick={() => setOpen(false)}>Predictions</NavLink>}
+            {user && <NavLink to="/stress-test" className={navLink} onClick={() => setOpen(false)}>Stress Test</NavLink>}
+            {user && <NavLink to="/trade-journal" className={navLink} onClick={() => setOpen(false)}>Trade Journal</NavLink>}
+            {user && <NavLink to="/persona-advisor" className={navLink} onClick={() => setOpen(false)}>AI Advisor</NavLink>}
+            {user && <NavLink to="/time-machine" className={navLink} onClick={() => setOpen(false)}>Time Machine</NavLink>}
             <NavLink to="/newsletter" className={navLink} onClick={() => setOpen(false)}>AI Digest</NavLink>
             <NavLink to="/feedback" className={navLink} onClick={() => setOpen(false)}>Feedback</NavLink>
             {user?.role === 'admin' && <NavLink to="/admin" className={navLink} onClick={() => setOpen(false)}>Admin</NavLink>}

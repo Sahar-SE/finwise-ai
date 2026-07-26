@@ -61,9 +61,6 @@ export default function Login() {
       <p className="mt-4 text-center text-sm text-[var(--text-muted)]">
         No account yet? <Link to="/register" className="text-[var(--mint)]">Create one</Link>
       </p>
-      <p className="mt-2 text-center text-xs text-[var(--text-muted)]">
-        Demo admin: admin@finwise.ai / Admin@12345 (change in production)
-      </p>
     </div>
   );
 }

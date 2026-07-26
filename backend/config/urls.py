@@ -19,6 +19,7 @@ urlpatterns = [
     path("api/surveys/", include("surveys.urls")),
     path("api/admin/", include("adminpanel.urls")),
     path("api/news/", include("news.urls")),
+    path("api/journal/", include("trade_journal.urls")),
     path("", include("seo.urls")),  # exposes /sitemap.xml and /robots.txt at root
 ]
 
