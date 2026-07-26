@@ -31,7 +31,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadData();
-    const id = setInterval(loadData, 30000);
+    const id = setInterval(loadData, 10000);
     return () => clearInterval(id);
   }, []);
 
@@ -223,6 +223,11 @@ export default function Dashboard() {
           </Card>
         ))}
       </div>
+      {equities[0]?.simulated && (
+        <p className="mt-3 text-xs text-[var(--text-muted)]">
+          Equity prices use Yahoo Finance live quotes by default. Gold prices use GoldAPI when a key is provided in backend .env; otherwise both fall back to simulated values.
+        </p>
+      )}
     </div>
   );
 }

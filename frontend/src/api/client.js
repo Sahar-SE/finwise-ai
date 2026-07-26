@@ -1,9 +1,19 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+function resolveApiBaseUrl() {
+  const configured = import.meta.env.VITE_API_BASE_URL?.trim();
+  if (!configured) return '';
+
+  const localHosts = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://0.0.0.0:8000'];
+  if (localHosts.includes(configured)) return '';
+
+  return configured;
+}
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 const client = axios.create({
-  baseURL: `${API_BASE_URL}/api`,
+  baseURL: API_BASE_URL ? `${API_BASE_URL}/api` : '/api',
   withCredentials: true,
 });
 

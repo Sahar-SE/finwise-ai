@@ -39,10 +39,23 @@ class OverviewView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
+        crypto = []
+        gold = None
+        equities = []
+
         try:
             crypto = services.fetch_crypto_prices()
+        except Exception:
+            crypto = []
+
+        try:
             gold = services.fetch_gold_price()
+        except Exception:
+            gold = None
+
+        try:
             equities = services.fetch_equity_prices()
-            return Response({"crypto": crypto[:10], "gold": gold, "equities": equities})
-        except Exception as exc:
-            return Response({"error": "Failed to fetch market overview.", "detail": str(exc)}, status=502)
+        except Exception:
+            equities = []
+
+        return Response({"crypto": crypto[:10], "gold": gold, "equities": equities})

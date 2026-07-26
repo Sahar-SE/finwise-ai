@@ -6,21 +6,59 @@ import { Check, X, Trash2 } from 'lucide-react';
 export default function SurveyModeration() {
   const [filter, setFilter] = useState('pending');
   const [rows, setRows] = useState([]);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   async function load() {
-    const res = await client.get(`/admin/surveys?status=${filter}`);
-    setRows(res.data.data);
+    try {
+      const res = await client.get(`/admin/surveys?status=${filter}`);
+      setRows(res.data.data);
+      setError('');
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to load surveys');
+    }
   }
   useEffect(() => { load(); }, [filter]);
 
-  async function approve(id) { await client.post(`/admin/surveys/${id}/approve`); load(); }
-  async function reject(id) { await client.post(`/admin/surveys/${id}/reject`); load(); }
-  async function remove(id) { await client.delete(`/admin/surveys/${id}`); load(); }
+  async function approve(submissionId) {
+    try {
+      await client.post(`/admin/surveys/${submissionId}/approve`);
+      setMessage('Survey approved and published!');
+      setTimeout(() => setMessage(''), 3000);
+      load();
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to approve survey');
+    }
+  }
+  async function reject(submissionId) {
+    try {
+      await client.post(`/admin/surveys/${submissionId}/reject`);
+      setMessage('Survey flagged as inactive');
+      setTimeout(() => setMessage(''), 3000);
+      load();
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to reject survey');
+    }
+  }
+  async function remove(submissionId) {
+    if (!confirm('Delete this survey?')) return;
+    try {
+      await client.delete(`/admin/surveys/${submissionId}`);
+      setMessage('Survey deleted');
+      setTimeout(() => setMessage(''), 3000);
+      load();
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to delete survey');
+    }
+  }
 
   return (
     <div>
       <h1 className="font-display text-2xl font-semibold text-[var(--text)]">Survey moderation</h1>
       <p className="mt-1 text-sm text-[var(--text-muted)]">Approve feedback to publish it on the homepage, or reject to flag it inactive.</p>
+
+      {message && <div className="mt-4 rounded-md border border-[var(--mint)]/40 bg-[var(--mint)]/10 px-3 py-2 text-sm text-[var(--mint)]">{message}</div>}
+      {error && <div className="mt-4 rounded-md border border-[var(--coral)]/40 bg-[var(--coral)]/10 px-3 py-2 text-sm text-[var(--coral)]">{error}</div>}
 
       <div className="mt-4 flex gap-2">
         {['pending', 'published', 'all'].map((f) => (
@@ -33,7 +71,7 @@ export default function SurveyModeration() {
 
       <div className="mt-6 flex flex-col gap-3">
         {rows.map((r) => (
-          <Card key={r.id}>
+          <Card key={r.submission_id}>
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2">
@@ -49,12 +87,12 @@ export default function SurveyModeration() {
               </div>
               <div className="flex shrink-0 gap-2">
                 {!r.is_published && (
-                  <button onClick={() => approve(r.id)} className="rounded-md border border-[var(--mint)]/40 p-2 text-[var(--mint)] hover:bg-[var(--mint)]/10"><Check size={16} /></button>
+                  <button onClick={() => approve(r.submission_id)} className="rounded-md border border-[var(--mint)]/40 p-2 text-[var(--mint)] hover:bg-[var(--mint)]/10"><Check size={16} /></button>
                 )}
                 {r.is_published && (
-                  <button onClick={() => reject(r.id)} className="rounded-md border border-[var(--gold)]/40 p-2 text-[var(--gold)] hover:bg-[var(--gold)]/10"><X size={16} /></button>
+                  <button onClick={() => reject(r.submission_id)} className="rounded-md border border-[var(--gold)]/40 p-2 text-[var(--gold)] hover:bg-[var(--gold)]/10"><X size={16} /></button>
                 )}
-                <button onClick={() => remove(r.id)} className="rounded-md border border-[var(--coral)]/40 p-2 text-[var(--coral)] hover:bg-[var(--coral)]/10"><Trash2 size={16} /></button>
+                <button onClick={() => remove(r.submission_id)} className="rounded-md border border-[var(--coral)]/40 p-2 text-[var(--coral)] hover:bg-[var(--coral)]/10"><Trash2 size={16} /></button>
               </div>
             </div>
           </Card>

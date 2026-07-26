@@ -19,7 +19,7 @@ export default function PriceTicker() {
       }
     }
     load();
-    const interval = setInterval(load, 30000);
+    const interval = setInterval(load, 5000);
     return () => { mounted = false; clearInterval(interval); };
   }, []);
 

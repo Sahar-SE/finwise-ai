@@ -113,7 +113,19 @@ STORAGES = {
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ---------------- CORS ----------------
-CORS_ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("CORS_ORIGIN", "http://localhost:5173").split(",") if o.strip()]
+CORS_ALLOWED_ORIGINS = [
+    o.strip()
+    for o in os.environ.get(
+        "CORS_ORIGIN",
+        "http://localhost:5173,http://127.0.0.1:5173,http://0.0.0.0:5173",
+    ).split(",")
+    if o.strip()
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http://localhost(:\\d+)?$",
+    r"^http://127\\.0\\.0\\.1(:\\d+)?$",
+    r"^http://0\\.0\\.0\\.0(:\\d+)?$",
+]
 CORS_ALLOW_CREDENTIALS = True
 
 # ---------------- Django REST Framework ----------------
