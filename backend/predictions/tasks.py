@@ -6,19 +6,16 @@ from .models import PredictionTask
 
 
 @shared_task(name="predictions.run_prediction_task")
-def run_prediction_task(task_pk, symbol, price_series):
+def run_prediction_task(task_pk, symbol, price_series, horizon="7d", model_type="hybrid_ai"):
     """
-    Celery task: isolates the (potentially expensive) prediction computation
-    from the request/response cycle, satisfying the SRS's "Critical
-    Architectural Assurance" that any calculation exceeding 200ms must run
-    outside the synchronous request lifecycle.
+    Celery task: executes the advanced AI prediction model asynchronously.
     """
     task = PredictionTask.objects.get(pk=task_pk)
     try:
-        result = run_prediction_model(symbol, price_series)
+        result = run_prediction_model(symbol, price_series, horizon=horizon, model_type=model_type)
         task.status = PredictionTask.Status.COMPLETE
         task.result_json = result
-    except Exception as exc:  # pragma: no cover - defensive
+    except Exception as exc:  # pragma: no cover
         task.status = PredictionTask.Status.FAILED
         task.result_json = {"error": str(exc)}
     task.completed_at = timezone.now()

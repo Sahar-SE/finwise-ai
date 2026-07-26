@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "seo",
     "traffic",
     "adminpanel",
+    "news",
 ]
 
 MIDDLEWARE = [

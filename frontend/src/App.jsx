@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Portfolio from './pages/Portfolio';
 import Predictions from './pages/Predictions';
 import Feedback from './pages/Feedback';
+import Newsletter from './pages/Newsletter';
 
 import AdminLayout from './pages/admin/AdminLayout';
 import SeoManager from './pages/admin/SeoManager';
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/feedback" element={<Feedback />} />
 
             <Route element={<ProtectedRoute />}>

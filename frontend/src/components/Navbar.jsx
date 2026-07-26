@@ -29,6 +29,7 @@ export default function Navbar() {
           {user && <NavLink to="/dashboard" className={navLink}>Dashboard</NavLink>}
           {user && <NavLink to="/portfolio" className={navLink}>Portfolio</NavLink>}
           {user && <NavLink to="/predictions" className={navLink}>Predictions</NavLink>}
+          <NavLink to="/newsletter" className={navLink}>AI Digest</NavLink>
           <NavLink to="/feedback" className={navLink}>Feedback</NavLink>
           {user?.role === 'admin' && <NavLink to="/admin" className={navLink}>Admin</NavLink>}
         </nav>
@@ -63,6 +64,7 @@ export default function Navbar() {
             {user && <NavLink to="/dashboard" className={navLink} onClick={() => setOpen(false)}>Dashboard</NavLink>}
             {user && <NavLink to="/portfolio" className={navLink} onClick={() => setOpen(false)}>Portfolio</NavLink>}
             {user && <NavLink to="/predictions" className={navLink} onClick={() => setOpen(false)}>Predictions</NavLink>}
+            <NavLink to="/newsletter" className={navLink} onClick={() => setOpen(false)}>AI Digest</NavLink>
             <NavLink to="/feedback" className={navLink} onClick={() => setOpen(false)}>Feedback</NavLink>
             {user?.role === 'admin' && <NavLink to="/admin" className={navLink} onClick={() => setOpen(false)}>Admin</NavLink>}
             {user ? (
