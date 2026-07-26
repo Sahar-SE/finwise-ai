@@ -224,6 +224,26 @@ def _call_external_llm(symbol, signal, confidence, last_price, projected_price, 
         except Exception:
             pass
 
+    # G4F keyless fallback
+    try:
+        from g4f.client import Client as G4FClient
+        client = G4FClient()
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            timeout=10
+        )
+        text = response.choices[0].message.content
+        if text:
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0].strip()
+            elif "```" in text:
+                text = text.split("```")[1].strip()
+            return json.loads(text)
+    except Exception:
+        pass
+
     return None
 
 
