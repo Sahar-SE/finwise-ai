@@ -7,9 +7,16 @@ import client from '../api/client';
 
 export default function Landing() {
   const [testimonials, setTestimonials] = useState([]);
+  const [goldData, setGoldData] = useState({ price: 2378.72, change24h: 0.79 });
 
   useEffect(() => {
     client.get('/surveys/published').then((res) => setTestimonials(res.data.data.slice(0, 3))).catch(() => {});
+    
+    // Fetch gold price for the featured card
+    client.get('/market/gold').then((res) => {
+      const data = res.data.data;
+      setGoldData({ price: data.price, change24h: data.change24h });
+    }).catch(() => {});
   }, []);
 
   return (
@@ -46,8 +53,10 @@ export default function Landing() {
               <span>XAU/USD · Live</span>
               <span className="text-[var(--mint)]">● streaming</span>
             </div>
-            <div className="mt-3 font-mono-data text-4xl text-[var(--text)]">$2,378.72</div>
-            <div className="mt-1 text-sm text-[var(--mint)]">▲ 0.79% · 24h</div>
+            <div className="mt-3 font-mono-data text-4xl text-[var(--text)]">${goldData.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}</div>
+            <div className={`mt-1 text-sm ${goldData.change24h >= 0 ? 'text-[var(--mint)]' : 'text-[var(--coral)]'}`}>
+              {goldData.change24h >= 0 ? '▲' : '▼'} {Math.abs(goldData.change24h).toFixed(2)}% · 24h
+            </div>
             <div className="mt-6 grid grid-cols-3 gap-3 text-center">
               <MiniStat label="BTC" value="+2.1%" positive />
               <MiniStat label="ETH" value="-0.4%" positive={false} />

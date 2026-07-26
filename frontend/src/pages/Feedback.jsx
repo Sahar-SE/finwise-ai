@@ -12,7 +12,7 @@ export default function Feedback() {
     e.preventDefault();
     setMessage(''); setError(''); setBusy(true);
     try {
-      const res = await client.post('/surveys', form);
+      const res = await client.post('/surveys/', form);
       setMessage(res.data.message);
       setForm({ username: '', rating_score: 5, qualitative_feedback: '', primary_market_focus: 'crypto' });
     } catch (err) {

@@ -54,7 +54,7 @@ export default function Portfolio() {
     const fd = new FormData();
     fd.append('file', file);
     try {
-      const res = await client.post('/assets/import/', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const res = await client.post('/assets/import/', fd);
       setMessage(`Imported ${res.data.imported} rows${res.data.failed ? `, ${res.data.failed} failed` : ''}.`);
       setFile(null);
       loadData();
