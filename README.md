@@ -84,28 +84,19 @@ Provide a JSON response with:
 ## 📸 Screenshots in Action
 
 ### 1. Landing Page & Live Market Pulse Widget
-*Save screenshot as: `screenshots/landing_page.png`*
-![Landing Page](<img width="1911" height="821" alt="Screenshot 2026-07-27 023157" src="https://github.com/user-attachments/assets/544869bb-d179-4448-9e08-77069d3fa641" />
-)
+![Landing Page](https://github.com/user-attachments/assets/544869bb-d179-4448-9e08-77069d3fa641)
 
 ### 2. AI Financial Digest & Newsletter Feed
-*Save screenshot as: `screenshots/newsletter_feed.png`*
-![AI Newsletter Feed](<img width="1901" height="825" alt="Screenshot 2026-07-27 021949" src="https://github.com/user-attachments/assets/1a77c2ef-f302-4eda-a195-c11cc7239dfd" />
-)
+![AI Newsletter Feed](https://github.com/user-attachments/assets/1a77c2ef-f302-4eda-a195-c11cc7239dfd)
 
 ### 3. AI Newsletter Impact Analysis & Advice Drawer
-*Save screenshot as: `screenshots/newsletter_analysis.png`*
-![AI Newsletter Analysis](<img width="1461" height="789" alt="Screenshot 2026-07-27 021925" src="https://github.com/user-attachments/assets/fb9664a5-17d3-4c0f-bb91-3033cb43e7b3" />
-)
+![AI Newsletter Analysis](https://github.com/user-attachments/assets/fb9664a5-17d3-4c0f-bb91-3033cb43e7b3)
 
 ### 4. AI Predictions & Monte Carlo Corridor Forecast
-*Save screenshot as: `screenshots/predictions_chart.png`*
-![AI Predictions Chart](https://github.com/user-attachments/assets/8368de75-da56-4169-b25e-abc888d6404a)
+![AI Predictions Chart](https://github.com/user-attachments/assets/2fb8877e-5463-4b1f-aa01-dcde6a571008)
 
 ### 5. AI Predictions Market Thesis & Catalyst Report
-*Save screenshot as: `screenshots/predictions_thesis.png`*
-![AI Predictions Thesis](<img width="1908" height="650" alt="Screenshot 2026-07-27 022218" src="https://github.com/user-attachments/assets/87da7607-57cd-4352-b171-b0c269f480c3" />
-)
+![AI Predictions Thesis](https://github.com/user-attachments/assets/87da7607-57cd-4352-b171-b0c269f480c3)
 
 ---
 
