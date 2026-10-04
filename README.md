@@ -32,6 +32,7 @@ FinWise-AI solves this by combining raw technical data feeds with **Behavioral A
 6. **AI Legendary Investor Persona Advisor**: Delivers personalized advice from Buffett, Soros, Wood, Dalio, or Lynch in their authentic voice and philosophy.
 7. **Portfolio Time Machine**: Simulates what the user's portfolio would be worth if invested at historical coordinates (COVID bottom, BTC halving, 2017 boom).
 8. **Cross-Asset Correlation Heatmap & Contagion Radar**: Renders interactive SVG correlation matrices for portfolio assets with coupling contagion warnings.
+9. **Hybrid RAG Market Intelligence Engine**: Grounded retrieval system combining Okapi BM25 lexical ranking with dense vector cosine similarity (fused via Reciprocal Rank Fusion - RRF). Generates financial responses with strict inline citations `[1]`, pipeline inspection telemetry (latency, token expansion, rank scores), and automated offline benchmark evaluation (Recall@5 = 100%, MRR = 1.0, nDCG = 1.52).
 
 ---
 
@@ -122,3 +123,14 @@ npm install
 npm run dev
 ```
 *(Configure `VITE_API_BASE_URL=http://localhost:8000` inside `frontend/.env`)*
+
+---
+
+## 📚 Technical Documentation & System Design Specifications
+
+Comprehensive documentation for interviews, system design reviews, and architectural specifications:
+
+1. **[Product Requirements Document (PRD)](file:///c:/Users/sahar/Desktop/finwise-ai/docs/PRD.md)**: Product scope, target personas, functional requirements, RAG specs, and latency SLAs.
+2. **[System Architecture & RAG Pipeline Spec](file:///c:/Users/sahar/Desktop/finwise-ai/docs/ARCHITECTURE.md)**: Flow diagrams, Okapi BM25 math, Gemini embedding MRL truncation, Reciprocal Rank Fusion (RRF), and offline benchmark metrics.
+3. **[Technical Interview & System Design Guide](file:///c:/Users/sahar/Desktop/finwise-ai/docs/INTERVIEW_GUIDE.md)**: System design Q&A, elevator pitch, architectural trade-offs, and metrics cheat sheet.
+

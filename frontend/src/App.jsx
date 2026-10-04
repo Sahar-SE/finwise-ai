@@ -15,6 +15,7 @@ import StressTest from './pages/StressTest';
 import TradeJournal from './pages/TradeJournal';
 import PersonaAdvisor from './pages/PersonaAdvisor';
 import TimeMachine from './pages/TimeMachine';
+import RagAdvisor from './pages/RagAdvisor';
 
 import AdminLayout from './pages/admin/AdminLayout';
 import SeoManager from './pages/admin/SeoManager';
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/newsletter" element={<Newsletter />} />
+            <Route path="/rag" element={<RagAdvisor />} />
             <Route path="/feedback" element={<Feedback />} />
 
             <Route element={<ProtectedRoute />}>

@@ -33,6 +33,7 @@ export default function Navbar() {
           {user && <NavLink to="/trade-journal" className={navLink}>Trade Journal</NavLink>}
           {user && <NavLink to="/persona-advisor" className={navLink}>AI Advisor</NavLink>}
           {user && <NavLink to="/time-machine" className={navLink}>Time Machine</NavLink>}
+          <NavLink to="/rag" className={navLink}>Market Intel</NavLink>
           <NavLink to="/newsletter" className={navLink}>AI Digest</NavLink>
           <NavLink to="/feedback" className={navLink}>Feedback</NavLink>
           {user?.role === 'admin' && <NavLink to="/admin" className={navLink}>Admin</NavLink>}
@@ -72,6 +73,7 @@ export default function Navbar() {
             {user && <NavLink to="/trade-journal" className={navLink} onClick={() => setOpen(false)}>Trade Journal</NavLink>}
             {user && <NavLink to="/persona-advisor" className={navLink} onClick={() => setOpen(false)}>AI Advisor</NavLink>}
             {user && <NavLink to="/time-machine" className={navLink} onClick={() => setOpen(false)}>Time Machine</NavLink>}
+            <NavLink to="/rag" className={navLink} onClick={() => setOpen(false)}>Market Intel</NavLink>
             <NavLink to="/newsletter" className={navLink} onClick={() => setOpen(false)}>AI Digest</NavLink>
             <NavLink to="/feedback" className={navLink} onClick={() => setOpen(false)}>Feedback</NavLink>
             {user?.role === 'admin' && <NavLink to="/admin" className={navLink} onClick={() => setOpen(false)}>Admin</NavLink>}

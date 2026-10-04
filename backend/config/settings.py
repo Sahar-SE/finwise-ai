@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "adminpanel",
     "news",
     "trade_journal",
+    "rag",
 ]
 
 MIDDLEWARE = [
