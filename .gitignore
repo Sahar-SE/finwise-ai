@@ -1,0 +1,45 @@
+# Dependencies & virtual environments
+node_modules/
+**/node_modules/
+venv/
+**/venv/
+.venv/
+**/.venv/
+env/
+**/env/
+
+# Build & output directories
+dist/
+**/dist/
+dist-ssr/
+**/dist-ssr/
+build/
+**/build/
+staticfiles/
+**/staticfiles/
+
+# Python cache & compiled files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Database & local data
+*.sqlite3
+**/data/
+*.db
+
+# Environment variables & secrets
+.env
+**/.env
+.env.local
+.env.*.local
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
